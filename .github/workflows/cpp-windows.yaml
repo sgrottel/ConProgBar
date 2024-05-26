@@ -39,7 +39,4 @@ jobs:
       run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.BuildType }}
 
     - name: Test
-      shell: pwsh
-      working-directory: ${{ github.workspace }}/build
-      run: |
-        gci -recurse
+      run: ${{ github.workspace }}/build/${{ matrix.BuildType }}/ConProgBar.exe
