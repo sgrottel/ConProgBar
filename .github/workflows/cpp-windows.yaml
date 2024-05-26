@@ -1,0 +1,42 @@
+name: Cpp Windows
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+    - .github/workflows/cpp-windows.yaml
+    - cpp/**
+  pull_request:
+    branches: [ "main" ]
+    paths:
+    - .github/workfloww/cpp-windows.yaml
+    - cpp/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        BuildType: [Debug, Release]
+      fail-fast: false
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Configure CMake
+      working-directory: cpp
+      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+      run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ matrix.BuildType }}
+
+    - name: Build
+      working-directory: cpp
+      # Build your program with the given configuration
+      run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.BuildType }}
+
+    - name: Test
+      run: ${{ github.workspace }}/build/${{ matrix.BuildType }}/ConProgBar.exe

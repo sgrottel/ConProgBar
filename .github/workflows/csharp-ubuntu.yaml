@@ -1,0 +1,45 @@
+name: CSharp Ubuntu
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+    - .github/workflows/csharp-ubuntu.yaml
+    - csharp/**
+  pull_request:
+    branches: [ "main" ]
+    paths:
+    - .github/workflows/csharp-ubuntu.yaml
+    - csharp/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+      fail-fast: false
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Install dependencies
+      run: dotnet restore ./csharp/ConProgBarSharp.sln
+
+    - name: Build
+      run: dotnet build --configuration ${{ matrix.configuration }} --no-restore ./csharp/ConProgBarSharp.csproj
+
+    - name: Run Test
+      shell: pwsh
+      run: |
+        cd ((([object[]](gci ./csharp/bin/${{matrix.configuration}}/))[-1]).FullName)
+        dotnet ./ConProgBarSharp.dll

@@ -21,7 +21,21 @@ namespace ConProgBarSharp
 				tbProg = new WinTaskbarProgress() { Handle = WinTaskbarProgress.FindConsoleWindowHandle() };
 			}
 
-			bar.MaximumWidth = Console.WindowWidth - 1;
+			try
+			{
+				int conWidth = Console.WindowWidth - 1;
+				if (conWidth < 20)
+				{
+					Console.WriteLine($"Console Width = {conWidth} too narrow!");
+					conWidth = 20;
+				}
+				bar.MaximumWidth = conWidth;
+			}
+			catch
+			{
+				// console will not support width query if run in CI
+				bar.MaximumWidth = 40;
+			}
 			bar.MinimumWidth = bar.MaximumWidth;
 
 			tbProg.SetState(TaskbarProgress.State.Indeterminate);

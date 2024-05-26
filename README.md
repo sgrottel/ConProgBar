@@ -4,6 +4,11 @@ A simple progress bar for the text console.
 For both C++ and CSharp simply add the required file to your project.
 For C++, this is a single header file.
 
+[![GitHub License](https://img.shields.io/github/license/sgrottel/ConProgBar)](./License)
+[![CSharp Windows](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml)
+[![CSharp Ubuntu](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml)
+[![Cpp Windows](https://github.com/sgrottel/ConProgBar/actions/workflows/cpp-windows.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/cpp-windows.yaml)
+
 ## C# Usage Example
 
 Add `ConProgBar.cs` and optionally `TaskbarProgress.cs` to your project.
