@@ -2,7 +2,7 @@ name: Cpp Windows
 
 on:
   push:
-    branches: [ "main", "ci" ]
+    branches: [ "main" ]
     paths:
     - .github/workflows/cpp-windows.yaml
     - cpp/**
