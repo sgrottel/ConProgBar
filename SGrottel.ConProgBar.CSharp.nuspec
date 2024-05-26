@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package
+	xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+	<!-- nuget pack .\SGrottel.ConProgBar.CSharp.nuspec -->
+
+	<!-- package metadata -->
+	<metadata minClientVersion="3.3" >
+		<id>SGrottel.ConProgBar.CSharp</id>
+		<version>0.2.0.0</version>
+		<title>SGrottel.ConProgBar.CSharp</title>
+		<authors>SGrottel</authors>
+		<owners>SGrottel</owners>
+		<license type="expression">Apache-2.0</license>
+		<projectUrl>https://github.com/sgrottel/ConProgBar</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>A simple progress bar for the text console.</description>
+		<copyright>Copyright 2022-2024</copyright>
+		<tags>Console ProgressBar</tags>
+		<readme>docs/README.md</readme>
+
+		<contentFiles>
+			<files include="cs/any/ConProgBar/ConProgBar.cs" />
+			<files include="cs/any/ConProgBar/TaskbarProgress.cs" />
+		</contentFiles>
+	</metadata>
+
+	<!-- content -->
+	<files>
+		<file src="csharp\ConProgBar.cs" target="contentFiles/cs/any/ConProgBar" />
+		<file src="csharp\TaskbarProgress.cs" target="contentFiles/cs/any/ConProgBar" />
+
+		<file src="LICENSE" target="docs/LICENSE" />
+		<file src="package_readme.md" target="docs/README.md" />
+	</files>
+
+</package>
