@@ -226,7 +226,7 @@ namespace ConProgBarSharp
 			}
 
 			string t = text;
-			if (3 + p.Length + t.Length > maxWidth)
+			if (5 + p.Length + t.Length > maxWidth)
 			{
 				t = t.Substring(0, maxWidth - p.Length - 5) + "...";
 			}
