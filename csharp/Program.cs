@@ -1,4 +1,7 @@
-﻿namespace ConProgBarSharp
+﻿using System;
+using System.Threading;
+
+namespace ConProgBarSharp
 {
 	internal class Program
 	{
