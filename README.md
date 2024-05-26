@@ -1,13 +1,44 @@
 # ConProgBar
-A simple single-file C++/H progress bar for the text console.
+A simple progress bar for the text console.
 
-This is based on an older C# implementation.
-I rewrote the important parts in C++.
+For both C++ and CSharp simply add the required file to your project.
+For C++, this is a single header file.
 
-## Usage
+## C# Usage Example
+
+Add `ConProgBar.cs` and optionally `TaskbarProgress.cs` to your project.
+
+```csharp
+ConProgBar bar = new();
+bar.MaximumWidth = Console.WindowWidth - 1;
+bar.MinimumWidth = bar.MaximumWidth;
+
+bar.Show = true;
+
+for (int i = 0; i < maxI; ++i)
+{
+	bar.Value = (double)i / maxI;
+
+	Thread.Sleep(500);
+
+	if (i == 10)
+	{
+		bar.Show = false;
+		Console.WriteLine("Intermission...");
+		Thread.Sleep(2000);
+		bar.Show = true;
+	}
+}
+
+bar.Show = false;
+
+Console.WriteLine("Done.");
+```
+
+## C++ Usage Example
+
 Just add `ConProgBar.h` to your project.
 
-## Example
 ```cpp
 #include "ConProgBar.h"
 
@@ -38,7 +69,7 @@ If you do, be sure to add a new line to your output, as a subsequence output fro
 ## License
 The code is freely available under terms of the Apache License V2 (see [LICENSE](./License))
 
-> Copyright 2022 SGrottel
+> Copyright 2022-2024 SGrottel
 >
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
