@@ -5,6 +5,7 @@ For both C++ and CSharp simply add the required file to your project.
 For C++, this is a single header file.
 
 [![GitHub License](https://img.shields.io/github/license/sgrottel/ConProgBar)](./License)
+[![NuGet Version](https://img.shields.io/nuget/v/SGrottel.ConProgBar.CSharp?logo=nuget&label=CSharp%20Nuget&color=green)](https://www.nuget.org/packages/SGrottel.ConProgBar.CSharp/)
 [![CSharp Windows](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml)
 [![CSharp Ubuntu](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml)
 [![Cpp Windows](https://github.com/sgrottel/ConProgBar/actions/workflows/cpp-windows.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/cpp-windows.yaml)
