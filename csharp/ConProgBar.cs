@@ -48,15 +48,22 @@ namespace ConProgBarSharp
 			}
 		}
 
+		private const int absMinWidth = 20;
+
 		private int minWidth = 40;
 		public int MinimumWidth
 		{
 			get => minWidth;
 			set
 			{
-				if (minWidth != value)
+				int v = value;
+				if (v < absMinWidth)
 				{
-					minWidth = value;
+					v = absMinWidth;
+				}
+				if (minWidth != v)
+				{
+					minWidth = v;
 					if (show)
 					{
 						Update();
@@ -71,9 +78,14 @@ namespace ConProgBarSharp
 			get => maxWidth;
 			set
 			{
-				if (maxWidth != value)
+				int v = value;
+				if (v < absMinWidth)
 				{
-					maxWidth = value;
+					v = absMinWidth;
+				}
+				if (maxWidth != v)
+				{
+					maxWidth = v;
 					if (show)
 					{
 						Update();
@@ -226,9 +238,16 @@ namespace ConProgBarSharp
 			}
 
 			string t = text;
-			if (5 + p.Length + t.Length > maxWidth)
+			if (2 + p.Length + t.Length > maxWidth)
 			{
-				t = t.Substring(0, maxWidth - p.Length - 5) + "...";
+				if (maxWidth - p.Length - 5 > t.Length)
+				{
+					t = "...";
+				}
+				else
+				{
+					t = t.Substring(0, maxWidth - p.Length - 5) + "...";
+				}
 			}
 			t += $" {p}";
 

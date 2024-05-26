@@ -23,7 +23,13 @@ namespace ConProgBarSharp
 
 			try
 			{
-				bar.MaximumWidth = Console.WindowWidth - 1;
+				int conWidth = Console.WindowWidth - 1;
+				if (conWidth < 20)
+				{
+					Console.WriteLine($"Console Width = {conWidth} too narrow!");
+					conWidth = 20;
+				}
+				bar.MaximumWidth = conWidth;
 			}
 			catch
 			{
