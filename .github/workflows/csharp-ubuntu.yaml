@@ -3,8 +3,14 @@ name: CSharp Ubuntu
 on:
   push:
     branches: [ "main", "ci" ]
+    paths:
+    - .github/workflows/csharp-ubuntu.yaml
+    - csharp/**
   pull_request:
     branches: [ "main" ]
+    paths:
+    - .github/workflows/csharp-ubuntu.yaml
+    - csharp/**
   workflow_dispatch:
 
 jobs:
@@ -36,4 +42,4 @@ jobs:
       shell: pwsh
       run: |
         cd ((([object[]](gci ./csharp/bin/${{matrix.configuration}}/))[-1]).FullName)
-        dotnet .\ConProgBarSharp.dll
+        dotnet ./ConProgBarSharp.dll
