@@ -6,6 +6,7 @@ For C++, this is a single header file.
 
 [![GitHub License](https://img.shields.io/github/license/sgrottel/ConProgBar)](./License)
 [![CSharp Windows](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-windows.yaml)
+[![CSharp Ubuntu](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml/badge.svg)](https://github.com/sgrottel/ConProgBar/actions/workflows/csharp-ubuntu.yaml)
 
 ## C# Usage Example
 
