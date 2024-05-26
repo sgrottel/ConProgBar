@@ -2,7 +2,7 @@ name: CSharp Ubuntu
 
 on:
   push:
-    branches: [ "main", "ci" ]
+    branches: [ "main" ]
     paths:
     - .github/workflows/csharp-ubuntu.yaml
     - csharp/**

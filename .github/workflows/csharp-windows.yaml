@@ -2,7 +2,7 @@ name: CSharp Windows
 
 on:
   push:
-    branches: [ "main", "ci" ]
+    branches: [ "main" ]
     paths:
     - .github/workflows/csharp-windows.yaml
     - csharp/**
