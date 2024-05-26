@@ -209,6 +209,18 @@ namespace ConProgBarSharp
 			lastText = string.Empty;
 		}
 
+		public static void InsertDefaultColorMarkers(ref string t, int progPos, double progressValue)
+		{
+			t = t.Insert(progPos, "\u001b[40m");
+			t = $"\r[\u001b[37m\u001b[44m{t}\u001b[39m\u001b[49m]";
+		}
+
+		public delegate void InsertColorMarkersDelegate(ref string t, int progPos, double progressValue);
+
+		// format an color magic with: virtual terminal sequences
+		// https://learn.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
+		public InsertColorMarkersDelegate? InsertColorMarkers { get; set; } = null;
+
 		private void Update(object? _ = null)
 		{
 			string p = $"{progressValue:P1}";
@@ -245,9 +257,9 @@ namespace ConProgBarSharp
 					t = "...";
 				}
 				else
-				{
-					t = t.Substring(0, maxWidth - p.Length - 5) + "...";
-				}
+			{
+				t = t.Substring(0, maxWidth - p.Length - 5) + "...";
+			}
 			}
 			t += $" {p}";
 
@@ -261,11 +273,8 @@ namespace ConProgBarSharp
 			}
 			int lineLen = t.Length;
 
-			// format an color magic with: virtual terminal sequences
-			// https://learn.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
 			int progPos = Math.Clamp((int)(0.5 + t.Length * progressValue), 0, t.Length);
-			t = t.Insert(progPos, "\u001b[40m");
-			t = $"\r[\u001b[37m\u001b[44m{t}\u001b[39m\u001b[49m]";
+			(InsertColorMarkers ?? InsertDefaultColorMarkers).Invoke(ref t, progPos, progressValue);
 
 			if (lineLen + 2 < lastLineLen)
 			{
@@ -274,6 +283,43 @@ namespace ConProgBarSharp
 			lastLineLen = lineLen + 2;
 
 			Console.Write(t);
+		}
+
+		private static string ConsoleBackgroundColorVue(double v)
+		{
+			Console.BackgroundColor = ConsoleColor.Black;
+			if (v < 0.0) v = 0.0;
+			v -= Math.Floor(v);
+			v *= 6.0;
+
+			double r = Math.Max(Math.Clamp(2.0 - Math.Abs(v), 0.0, 1.0), Math.Clamp(2.0 - Math.Abs(v - 6), 0.0, 1.0));
+			double g = Math.Clamp(2.0 - Math.Abs(v - 2), 0.0, 1.0);
+			double b = Math.Clamp(2.0 - Math.Abs(v - 4), 0.0, 1.0);
+
+			r = (0.75 * 0.5 + r * 0.5);
+			g = (0.75 * 0.5 + g * 0.5);
+			b = (0.75 * 0.5 + b * 0.5);
+
+			int ir = Math.Clamp((int)(255.0 * r), 0, 255);
+			int ig = Math.Clamp((int)(255.0 * g), 0, 255);
+			int ib = Math.Clamp((int)(255.0 * b), 0, 255);
+
+			return $"\x1B[48;2;{ir};{ig};{ib}m";
+		}
+
+		public static void InsertRainbowColorMarkers(ref string t, int progPos, double progressValue)
+		{
+			int lineLen = t.Length;
+			System.Text.StringBuilder sb = new();
+			for (int i = 0; i < progPos; i++)
+			{
+				sb.Append(ConsoleBackgroundColorVue((double)i / lineLen + progressValue * 2.0));
+				sb.Append(t[i]);
+			}
+			sb.Append("\u001b[40m\u001b[37m");
+			sb.Append(t[progPos..]);
+			t = sb.ToString();
+			t = $"\r[\u001b[30m{t}\u001b[39m\u001b[49m]";
 		}
 
 	}

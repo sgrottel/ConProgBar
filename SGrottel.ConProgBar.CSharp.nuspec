@@ -6,7 +6,7 @@
 	<!-- package metadata -->
 	<metadata minClientVersion="3.3" >
 		<id>SGrottel.ConProgBar.CSharp</id>
-		<version>0.2.0.0</version>
+		<version>0.3.0</version>
 		<title>SGrottel.ConProgBar.CSharp</title>
 		<authors>SGrottel</authors>
 		<owners>SGrottel</owners>

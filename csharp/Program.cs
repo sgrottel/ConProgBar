@@ -12,6 +12,7 @@ namespace ConProgBarSharp
 			ConProgBar bar = new()
 			{
 				ShowEta = true,
+				InsertColorMarkers = ConProgBar.InsertRainbowColorMarkers,
 				Text = "Demoing"// + " with a very long title to see if the caption truncation does work as intended"
 			};
 
