@@ -17,10 +17,11 @@ namespace ConProgBarSharp
 			};
 
 			TaskbarProgress tbProg = new NullTaskbarProgress();
-			if (OperatingSystem.IsWindows())
-			{
-				tbProg = new WinTaskbarProgress() { Handle = WinTaskbarProgress.FindConsoleWindowHandle() };
-			}
+			//if (OperatingSystem.IsWindows())
+			//{
+			//	tbProg = new WinTaskbarProgress() { Handle = WinTaskbarProgress.FindConsoleWindowHandle() };
+			//}
+			tbProg = new TerminalTaskbarProgress();
 
 			try
 			{
