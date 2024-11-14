@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Threading;
@@ -152,5 +153,54 @@ namespace ConProgBarSharp
 			return rv >= 0;
 		}
 	}
+
+	/// <summary>
+	/// https://learn.microsoft.com/en-us/windows/terminal/tutorials/progress-bar-sequences
+	/// </summary>
+	public class TerminalTaskbarProgress : TaskbarProgress
+	{
+		public override bool SetState(State state)
+		{
+			if (lastState != state)
+			{
+				lastState = state;
+				Update();
+			}
+			return true;
+		}
+
+		public override bool SetValue(ulong value, ulong maxValue)
+		{
+			int intValProg = (int)(Math.Clamp((double)value / maxValue, 0.0, 1.0) * 100.0);
+			if (lastVal != intValProg)
+			{
+				if (lastState == State.Indeterminate || lastState == State.Paused)
+				{
+					lastState = State.Normal;
+				}
+				lastVal = intValProg;
+				Update();
+			}
+			return true;
+		}
+
+		private void Update()
+		{
+			int state;
+			switch (lastState)
+			{
+				case State.None: state = 0; break;
+				case State.Normal: state = 1; break;
+				case State.Error: state = 2; break;
+				case State.Indeterminate: state = 3; break;
+				case State.Paused: state = 4; /* aka warning */ break;
+				default: state = 0; break;
+			}
+			Console.Write($"\x1B]9;4;{state};{lastVal}\x07");
+		}
+
+		private int lastVal = -1;
+		private State lastState = State.None;
+	};
 
 }
