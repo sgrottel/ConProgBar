@@ -2,7 +2,7 @@
 // ConProgBar.h
 // A simple single-file C++/H progress bar for the text console.
 //
-// Copyright 2022 SGrottel
+// Copyright 2022-2025 SGrottel
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 //
 // ---------------------------------
 //
+// version 0.2  -  2025-05-17
 // version 0.1  -  2022-03-10
 //
 #ifndef _ConProgBar_h_included_AB27DE64_
