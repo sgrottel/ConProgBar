@@ -27,7 +27,7 @@ bar.Show = false;
 ## License
 The code is freely available under terms of the Apache License V2 (see [LICENSE](./License))
 
-> Copyright 2022-2024 SGrottel
+> Copyright 2022-2025 SGrottel
 >
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
