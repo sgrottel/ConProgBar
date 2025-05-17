@@ -43,10 +43,10 @@ Console.WriteLine("Done.");
 
 ## C++ Usage Example
 
-Just add `ConProgBar.h` to your project.
+Just add `ConProgBar.hpp` to your project.
 
 ```cpp
-#include "ConProgBar.h"
+#include "ConProgBar.hpp"
 
 // ...
 
@@ -75,7 +75,7 @@ If you do, be sure to add a new line to your output, as a subsequence output fro
 ## License
 The code is freely available under terms of the Apache License V2 (see [LICENSE](./License))
 
-> Copyright 2022-2024 SGrottel
+> Copyright 2022-2025 SGrottel
 >
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.

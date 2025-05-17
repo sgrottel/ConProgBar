@@ -8,6 +8,6 @@ project("ConProgBar")
 # Add source to this project's executable.
 add_executable(ConProgBar
 	"ConProgBar.cpp"
-	"ConProgBar.h"
+	"ConProgBar.hpp"
 )
 

@@ -2,7 +2,7 @@
 // ConProgBar
 // ConProgBar.cpp : simple test application
 //
-// Copyright 2022 SGrottel
+// Copyright 2022-2025 SGrottel
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 // See the License for the specific language governing permissionsand
 // limitations under the License.
 //
-#include "ConProgBar.h"
+#include "ConProgBar.hpp"
 
 #include <thread>
 #include <chrono>

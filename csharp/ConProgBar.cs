@@ -2,7 +2,7 @@
 // ConProgBar.cpp
 // A simple csharp progress bar for the text console.
 //
-// Copyright 2024 SGrottel
+// Copyright 2024-2025 SGrottel
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
